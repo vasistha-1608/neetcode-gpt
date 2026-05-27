@@ -3,20 +3,11 @@ from numpy.typing import NDArray
 
 
 class Solution:
-    
-    def sigmoid(self, z: NDArray[np.float64]) -> NDArray[np.float64]:
-        # z is a 1D NumPy array
-        # Formula: 1 / (1 + e^(-z))
-        # return np.round(your_answer, 5)
-        sig = np.ones(z.shape)/(np.ones(z.shape)+np.exp(-z))
-        
-        
-        return np.round(sig,5)
-        pass
 
-    def relu(self, z: NDArray[np.float64]) -> NDArray[np.float64]:
-        # z is a 1D NumPy array
-        # Formula: max(0, z) element-wise
-        return np.maximum(0.0, z)
-        
-        pass
+    def softmax(self, z: NDArray[np.float64]) -> NDArray[np.float64]:
+        # z is a 1D NumPy array of logits
+        # Hint: subtract max(z) for numerical stability before computing exp
+        # return np.round(your_answer, 4)
+        result= z- np.max(z)
+        return np.round(np.exp(result)/(np.sum(np.exp(result))),4) 
+    
